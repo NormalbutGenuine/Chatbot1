@@ -23,9 +23,9 @@ while True:
         'BotType': "MyService"
     }
     message = json.dumps(json_data)
-    mySocket.send(message.encode(encoding="utf-8"))
+    mySocket.send(message)
     # 챗봇 엔진 답변 출력
-    data = mySocket.recv(2048).decode(encoding="utf-8")
+    data = mySocket.recv(2048)
     ret_data = json.loads(data)
     print("답변 : ")
     print(ret_data['Answer'])
