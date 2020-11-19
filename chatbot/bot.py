@@ -28,7 +28,7 @@ def to_client(conn, addr, params):
         # 데이터 수신
         read = conn.recv(2048)  # 수신 데이터가 있을 때 까지 블로킹
         print('===========================')
-        print('Connection from: %s' % str(addr))
+        print('Connection from: %s' % addr)
 
         if read is None or not read:
             # 클라이언트 연결이 끊어지거나, 오류가 있는 경우
@@ -64,7 +64,7 @@ def to_client(conn, addr, params):
             "Answer": answer,
             "AnswerImage": answer_image,
             "Intent": intent_name,
-            "NER": str(ner_predicts)
+            "NER": ner_predicts
         }
         message = json.dumps(send_json_data_str)
         print(message)
