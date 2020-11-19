@@ -37,7 +37,7 @@ def to_client(conn, addr, params):
 
 
         # json 데이터로 변환
-        recv_json_data = json.loads(read.decode())
+        recv_json_data = json.loads(read)
         print("데이터 수신 : ", recv_json_data)
         query = recv_json_data['Query']
         # print(query) 여기 까지는 정상적으로 작동
