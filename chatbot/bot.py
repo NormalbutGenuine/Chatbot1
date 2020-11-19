@@ -37,7 +37,7 @@ def to_client(conn, addr, params):
 
 
         # json 데이터로 변환
-        recv_json_data = json.loads(read.decode("utf-8"))
+        recv_json_data = json.loads(read.decode())
         print("데이터 수신 : ", recv_json_data)
         query = recv_json_data['Query']
         # print(query) 여기 까지는 정상적으로 작동
@@ -68,7 +68,7 @@ def to_client(conn, addr, params):
         }
         message = json.dumps(send_json_data_str)
         print(message)
-        conn.send(message.encode(encoding="utf-8"))
+        conn.send(message.encode())
 
     except Exception as ex:
         print(ex)
