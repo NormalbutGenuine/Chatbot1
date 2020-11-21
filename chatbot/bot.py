@@ -83,7 +83,7 @@ if __name__ == '__main__':       # 다른 파일에서 import해서 쓰지 않�
 
     # 질문/답변 학습 디비 연결 객체 생성
     db = Database(
-        host=DB_HOST, user=DB_USER, port=DB_PORT, db_name=DB_NAME
+        host=DB_HOST, user=DB_USER, port=DB_PORT, db_name=DB_NAME, password=DB_PASSWORD
     )
     print("DB 접속")
 
