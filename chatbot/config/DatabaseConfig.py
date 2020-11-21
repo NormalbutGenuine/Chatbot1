@@ -1,4 +1,4 @@
-DB_HOST = "database-chatbot.cewgljvqav4v.ap-northeast-2.rds.amazonaws.com"
+DB_HOST = "13.209.47.229"
 DB_USER = "root"
 DB_PASSWORD = "tiger"
 DB_NAME = "chatbot"
