@@ -7,10 +7,10 @@ class Database:
     데이터베이스제어
     '''
 
-    def __init__(self, host, user, password, db_name, charset='utf8'):
+    def __init__(self, host, user, port, db_name, charset='utf8'):
         self.host=host
         self.user = user
-        self.password = password
+        self.port = port
         self.charset = charset
         self.db_name = db_name
         self.conn = None
@@ -23,7 +23,7 @@ class Database:
         self.conn = pymysql.connect(
             host = self.host,
             user = self.user,
-            password = self.password,
+            port = self.port,
             db = self.db_name,
             charset = self.charset
         )
