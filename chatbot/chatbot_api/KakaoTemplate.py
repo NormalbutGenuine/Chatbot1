@@ -32,5 +32,5 @@ class KakaoTemplate:
         # 텍스트 답변이 있는 경우
         if bot_resp['Answer'] is not None:
             responseBody['template']['outputs'].append(self.simpleTextComponent(bot_resp['Answer']))
-
+        
         return responseBody
