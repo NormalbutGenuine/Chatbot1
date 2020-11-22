@@ -67,7 +67,7 @@ def to_client(conn, addr, params):
             "NER": str(ner_predicts)
         }
         message = json.dumps(send_json_data_str)
-        print(message)
+        print(message.encode())
         conn.send(message.encode())
 
     except Exception as ex:
