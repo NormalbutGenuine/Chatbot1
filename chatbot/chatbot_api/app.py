@@ -58,7 +58,7 @@ def query(bot_type):
 
             from KakaoTemplate import KakaoTemplate
             skillTemplate = KakaoTemplate()
-            return skillTemplate.send_response(ret)
+            return skillTemplate.send_resp(ret)
 
         elif bot_type == "NAVER":
             # 네이버톡톡 이벤트 처리
