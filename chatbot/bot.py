@@ -62,7 +62,7 @@ def to_client(conn, addr, params):
         send_json_data_str = {
             "Query" : query,
             "Answer": answer,
-            "AnswerImage": answer_image,
+            "AnswerImageUrl": answer_image,
             "Intent": intent_name,
             "NER": str(ner_predicts)
         }
