@@ -25,7 +25,7 @@ def get_answer_from_engine(bottype, query):
     mySocket.send(message.encode())
 
     # 챗봇 엔진 답변 출력
-    data = mySocket.recv(2048).decode('utf-8')
+    data = mySocket.recv(2048).decode()
     ret_data = json.loads(data)
 
     # 챗봇 엔진 서버 연결 소켓 닫기
@@ -58,11 +58,33 @@ def query(bot_type):
 
             from KakaoTemplate import KakaoTemplate
             skillTemplate = KakaoTemplate()
-            return skillTemplate.send_resp(ret)
+            return skillTemplate.send_response(ret)
 
         elif bot_type == "NAVER":
             # 네이버톡톡 이벤트 처리
-            pass
+            body= request.get_json()
+            user_key = body['user']
+            event = body['event']
+
+            from NaverEvent import NaverEvent
+            authorization_key = 'EOHPeojGQRiRiy/RyUvo'
+            naverEvent= NaverEvent(authorization_key)
+
+            if event == "open":
+                # 사용자가 채팅방에 들어왔을 때 처리
+                print("채팅방에 유저가 들어왔습니다.")
+                return json.dumps({}), 200
+            
+            elif event == "leave":
+                # 사용자가 채팅방에 나갔을 때 처리
+                print("채팅방에서 유저가 나갔습니다.")
+                return json.dumps({}), 200
+
+            elif event == "send":
+                # 사용자가 챗봇에 send 이벤트를 전송했을 때
+                user_text = body['textContent']['text']
+                ret = get_answer_from_engine(bottype=bot_type, query=user_text)
+                return naverEvent.send_response(user_key, ret)
 
         else:
             # 정의되지 않은 bot type인 경우 404 오류
@@ -75,4 +97,3 @@ def query(bot_type):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
