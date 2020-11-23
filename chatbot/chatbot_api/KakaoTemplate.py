@@ -27,7 +27,7 @@ class KakaoTemplate:
         # 이미지 답변이 텍스트 답변보다 먼저 출력 됨
         # 이미지 답변이 있는 경우
         if bot_resp['AnswerImageUrl'] is not None:
-            responseBody['template']['outputs'].append(self.simpleImageComponent(bot_resp['AnswerImageUrl'], ''))
+            responseBody['template']['outputs'].append(self.simpleImageComponent(bot_resp['AnswerImageUrl'], "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"))
 
         # 텍스트 답변이 있는 경우
         if bot_resp['Answer'] is not None:
